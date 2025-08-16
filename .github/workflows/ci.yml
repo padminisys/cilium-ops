@@ -21,7 +21,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install ansible-core ansible-lint yamllint molecule molecule-plugins[podman]
+          pip install --upgrade pip setuptools
+          pip install ansible-core ansible-lint yamllint "molecule>=4" "molecule-plugins>=24"
 
       - name: Run linting
         run: |

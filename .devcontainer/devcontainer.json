@@ -1,0 +1,21 @@
+{
+  "name": "Ansible Collection Development",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "postCreateCommand": "pip install --upgrade pip setuptools && pip install ansible-core ansible-lint yamllint 'molecule>=4' 'molecule-plugins>=24' pre-commit",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "redhat.ansible",
+        "ms-python.python",
+        "redhat.vscode-yaml"
+      ],
+      "settings": {
+        "ansible.useFullyQualifiedCollectionNames": true,
+        "files.associations": {
+          "*.yml": "ansible",
+          "*.yaml": "ansible"
+        }
+      }
+    }
+  }
+}

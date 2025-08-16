@@ -3,5 +3,6 @@
   hosts: all
   gather_facts: false
   tasks:
-    - name: "Include padminisys.debug collection playbook"
-      ansible.builtin.include: ../../padminisys.debug/playbooks/hello.yml
+    - name: "Test debug message from collection playbook"
+      ansible.builtin.debug:
+        msg: "Hello from my collection playbook!"
