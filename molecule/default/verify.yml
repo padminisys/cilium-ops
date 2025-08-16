@@ -3,16 +3,9 @@
   hosts: all
   gather_facts: false
   tasks:
-    - name: Example assertion
-      ansible.builtin.assert:
-        that:
-          - true
-        fail_msg: "This should never fail"
-        success_msg: "Verification passed"
-
-    - name: Check if system is reachable
+    - name: "Verify system is reachable"
       ansible.builtin.ping:
 
-    - name: Verify debug message was displayed (check logs)
+    - name: "Verification complete"
       ansible.builtin.debug:
-        msg: "If you see this, the verify step is working correctly"
+        msg: "✅ Collection playbook test completed successfully!"

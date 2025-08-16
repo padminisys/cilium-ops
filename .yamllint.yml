@@ -1,44 +1,13 @@
 extends: default
 
 rules:
-  # 120 chars should be enough, but don't fail if a line is longer
   line-length:
     max: 120
-    level: warning
-
-  # don't bother me with this rule
-  comments:
-    min-spaces-from-content: 1
-
-  # allow empty values like 'key:'
-  empty-values:
-    forbid-in-block-mappings: false
-    forbid-in-flow-mappings: false
-
-  # allow truthy values like 'yes', 'on', etc.
   truthy:
-    allowed-values: ['true', 'false', 'yes', 'no', 'on', 'off']
-
-  # be more lenient with brackets
-  brackets:
-    max-spaces-inside: 1
-    max-spaces-inside-empty: 0
-
-  # be more lenient with braces
-  braces:
-    max-spaces-inside: 1
-    max-spaces-inside-empty: 0
-
-  # allow document start marker to be omitted
+    allowed-values: ['true', 'false', 'yes', 'no']
   document-start: disable
-
-  # allow multiple documents in one file
-  document-end: disable
 
 ignore: |
   .github/
   .ansible/
-  molecule/*/
-  .tox/
-  .cache/
-  .pytest_cache/
+  molecule/

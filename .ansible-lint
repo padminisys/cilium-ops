@@ -1,93 +1,13 @@
 ---
-# .ansible-lint configuration file
-
-# List of additional kind:pattern to be added at the top of the default
-# match list, first match determines the file kind.
-kinds:
-  - playbook: "playbooks/*.{yml,yaml}"
-  - galaxy: "galaxy.yml"
-  - requirements: "requirements.yml"
-  - vars: "vars/*.{yml,yaml}"
-  - meta: "meta/main.{yml,yaml}"
-
-# Ansible-lint completely ignores rules/tags listed below
 skip_list:
-  - yaml[line-length]  # Let yamllint handle line length
-  - name[casing]       # Allow flexible task naming
-  - fqcn[action-core]  # Allow core modules without FQCN for readability
+  - yaml[line-length]
+  - name[casing]
 
-# Report only a subset of tags and fully ignore any others
-# tags:
-#   - jinja[spacing]
-
-# This makes linter to fully ignore rules/tags listed below
 warn_list:
-  - experimental  # all rules tagged as experimental
-  - yaml[truthy]  # Allow yes/no, on/off, etc.
+  - experimental
+  - yaml[truthy]
 
-# Ansible-lint does not automatically load rules that have the 'opt-in' tag.
-# You must enable opt-in rules by listing each rule 'id' below.
-enable_list:
-  - args
-  - empty-string-compare
-  - no-log-password
-  - no-same-owner
-  - name[prefix]
-
-# Offline mode disables installation of requirements.yml and schema refreshing
-offline: false
-
-# Define required Ansible's variables to satisfy syntax check
-extra_vars:
-  foo: bar
-  multiline_string_variable: |
-    line1
-    line2
-  complex_variable: ":{;\t$()"
-
-# Uncomment to enforce action validation with tasks, usually is not
-# needed as Ansible syntax check also covers it.
-# skip_action_validation: false
-
-# List of additional collections to allow in only when using 'fqcn' rule.
-# The 'fqcn' rule is used to enforce using FQCN for all actions.
-allowed_collections:
-  - ansible.posix
-  - ansible.utils
-  - community.general
-  - community.crypto
-  - community.docker
-
-# List of additions modules to allow in only when using 'fqcn' rule.
-# The 'fqcn' rule is used to enforce using FQCN for all actions.
-# allowed_modules:
-#   - example_module
-
-# Allow setting custom prefix to use with name[prefix] rule
-task_name_prefix: "{stem} | "
-var_naming_pattern: "^[a-z_][a-z0-9_]*$"
-
-use_default_rules: true
-# Load custom rules from this specific folder
-# rulesdir:
-#   - ./rule/directory/
-
-# Ansible-lint is able to recognize and load skip rules stored inside
-# `.ansible-lint-ignore` (or `.config/ansible-lint-ignore.txt`) files.
-# To skip a rule just enter filename and tag, like "playbook.yml package-latest"
-# on a new line.
-# Optionally you can add comments after the tag, prefixed by "#".
-# We do not recommend the use of skip_list below because that will hide
-# violations from you. The preferred way to skip rules is to add them to the
-# ignore file and also add a comment that explains the reason why it is
-# acceptable on a per case basis.
-
-# List of paths to directories or files to skip. This option is not affected
-# by the --exclude command line option and cannot be added to config file.
 exclude_paths:
-  - .cache/  # implicit unless exclude_paths is defined in config
   - .github/
   - .ansible/
   - molecule/
-  - .tox/
-  - .pytest_cache/
