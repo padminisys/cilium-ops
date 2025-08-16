@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: "Include padminisys.debug collection playbook"
+      ansible.builtin.include: ../../padminisys.debug/playbooks/hello.yml

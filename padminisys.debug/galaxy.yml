@@ -1,0 +1,9 @@
+namespace: padminisys
+name: debug
+version: 1.0.0
+readme: README.md
+description: "A collection with just one playbook to debug."
+license: MIT
+authors:
+  - name: Manish Dad
+    email: manish@padminisys.com

@@ -1,0 +1,63 @@
+{
+  "name": "Ansible Collection Development",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "postCreateCommand": "pip install --upgrade pip && pip install ansible-core==2.18.* ansible-lint==24.6.* yamllint==1.35.* molecule==24.2.* molecule-plugins[docker]==23.5.* ansible-navigator==24.2.* ansible-builder==3.1.* pytest==8.2.* pre-commit==3.7.*",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "redhat.ansible",
+        "ms-python.python",
+        "redhat.vscode-yaml",
+        "ms-azuretools.vscode-docker",
+        "ms-vscode.vscode-json",
+        "streetsidesoftware.code-spell-checker",
+        "ms-python.pylint",
+        "ms-python.flake8"
+      ],
+      "settings": {
+        "ansible.executionEnvironment.enabled": false,
+        "ansible.useFullyQualifiedCollectionNames": true,
+        "ansible.ansible.path": "/usr/local/bin/ansible",
+        "ansible.ansibleLint.enabled": true,
+        "ansible.ansibleLint.path": "/usr/local/bin/ansible-lint",
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "yaml.validate": true,
+        "yaml.format.enable": true,
+        "files.associations": {
+          "*.yml": "ansible",
+          "*.yaml": "ansible"
+        },
+        "yaml.schemas": {
+          "https://json.schemastore.org/ansible-playbook.json": [
+            "playbooks/*.yml",
+            "playbooks/*.yaml",
+            "**/playbooks/*.yml",
+            "**/playbooks/*.yaml"
+          ],
+          "https://json.schemastore.org/ansible-inventory.json": [
+            "inventory/*.yml",
+            "inventory/*.yaml",
+            "**/inventory/*.yml",
+            "**/inventory/*.yaml"
+          ]
+        },
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false,
+        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": true
+      }
+    }
+  },
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+  ],
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "shutdownAction": "stopContainer"
+}
